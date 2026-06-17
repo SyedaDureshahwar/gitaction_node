@@ -21,4 +21,5 @@ jobs:
         continue-on-error: true
 
       - name: Start Node app
-        run: start /B npm start
+        shell: cmd
+        run: npm start
