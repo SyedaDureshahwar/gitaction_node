@@ -1,11 +1,18 @@
-/*!
- * express
- * Copyright(c) 2009-2013 TJ Holowaychuk
- * Copyright(c) 2013 Roman Shtylman
- * Copyright(c) 2014-2015 Douglas Christopher Wilson
- * MIT Licensed
- */
+const express = require("express");
+const app = express();
 
-'use strict';
+const PORT = 3000;
 
-module.exports = require('./lib/express');
+// Home route
+app.get("/", (req, res) => {
+  res.send("🚀 Hello! Your Simple Node App is Running");
+});
+
+// About route
+app.get("/about", (req, res) => {
+  res.send("This is a simple Node + Express app for CI/CD practice");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
