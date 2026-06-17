@@ -1,4 +1,4 @@
-name: Node CI/CD Pipeline
+name: Node CI/CD
 
 on:
   push:
@@ -6,20 +6,19 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm install
 
-      - name: Stop old server
+      - name: Stop old process
         run: taskkill /F /IM node.exe
         continue-on-error: true
 
-      - name: Start Node app
+      - name: Start app with PM2
         shell: cmd
-        run: npm start
+        run: pm2 restart index.js || pm2 start index.js
