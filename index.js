@@ -5,7 +5,7 @@ const PORT = 3000;
 
 // Home route
 app.get("/", (req, res) => {
-  res.send("🚀 Hello! Your Simple Node App is Running");
+  res.send("🚀 Hello! Your Simple Node App is Running wow");
 });
 
 // About route
