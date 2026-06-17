@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: self-hosted
+  deploy:
+    runs-on: self-hosted   # your PC runner
 
     steps:
       - name: Checkout code
@@ -16,10 +16,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Stop old server
-        run: |
-          pkill -f node || true
+      - name: Stop old server (Windows safe)
+        run: taskkill /F /IM node.exe || exit 0
 
       - name: Start Node app
-        run: |
-          nohup node index.js > app.log 2>&1 &
+        run: start /B npm start
