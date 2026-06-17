@@ -19,6 +19,6 @@ jobs:
         run: taskkill /F /IM node.exe
         continue-on-error: true
 
-      - name: Start app with PM2
+      - name: Start app with PM2 (safe)
         shell: cmd
-        run: pm2 restart index.js || pm2 start index.js
+        run: pm2 start index.js --name node-app --update-env
